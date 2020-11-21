@@ -46,10 +46,13 @@ function ResultPage({ object ,props}) {
     }
     useEffect(() => {
         fetchData();
-        console.log(object);
+        //console.log(object);
     }, []);
 
     return (
+        <>
+        {     
+            leveldata &&
         <div>
             <StyledResult>
                 <div>
@@ -94,7 +97,9 @@ function ResultPage({ object ,props}) {
                     <Button onClick={onHandleAgain} >다시 하기</Button>
                 </div>
             </StyledResult>
-        </div>
+        </div>  
+}
+</>
     );
 }
 
