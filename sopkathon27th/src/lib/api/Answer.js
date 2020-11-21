@@ -9,7 +9,6 @@ const postAnswerAPI = async (object) => {
             birthYear: object.birthYear,
             answers: object.answers
         });
-        console.log(data);
         return data.data;
     } catch (e) {
         console.error('[FAIL] POST ANSWER', e);

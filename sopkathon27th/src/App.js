@@ -127,8 +127,9 @@ function App() {
   const [ans,SetAns] = useState([]);
   const [birthYear,setBirthYear] = useState("");
   const [object,setObject] = useState({
-      score: false,
-      scoreRate : 0
+      score: 0,
+      scoreRate : 0,
+      levelNum: 0
   });
   const onAnsHandler = (data)=>{
     SetAns([...ans, data]);
@@ -143,9 +144,11 @@ function App() {
       answers: ans
     }
     const result = await postAnswerAPI(object);
+    console.log(result);
     setObject({
       score: result.score,
-      scoreRate: result.scoreRate
+      scoreRate: result.scoreRate,
+      levelNum: result.levelNum
     });
   }
   return (
@@ -153,7 +156,7 @@ function App() {
         <Switch>
         <Route exact path='/' render={(props)=>(<LandingPage onBirthHandler={onBirthHandler} props={props}/>)}></Route>
           {/* <Route exact path='/' component={LandingPage} ></Route> */}
-          <Route exact path='/result/:idx' render={(props)=>(<ResultPage props={props} object={object}/>)}></Route>
+          <Route exact path='/result' render={(props)=>(<ResultPage props={props} object={object}/>)}></Route>
           {/* <Route exact path='/result/:idx' component={ResultPage}></Route> */}
           <Route exact path='/question/:idx' render={(props)=>(<QuestionPage onAnswerSubmit={onAnswerSubmit} onAnsHandler={onAnsHandler} props={props} question={question}/>)}></Route>
           {/* <Route exact path='/question/:idx' ></Route> */}

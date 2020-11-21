@@ -96,6 +96,7 @@ function QuestionPage({question, props, onAnsHandler, onAnswerSubmit}) {
         }else{
             onAnsHandler(1);
             onAnswerSubmit();
+            props.history.push('/result');
         }
     }
     const onClickHandler2 =()=>{
@@ -105,6 +106,7 @@ function QuestionPage({question, props, onAnsHandler, onAnswerSubmit}) {
         }else{
             onAnsHandler(2);
             onAnswerSubmit();
+            props.history.push('/result');
         }
     }
     const onClickHandler3 =()=>{
@@ -114,6 +116,7 @@ function QuestionPage({question, props, onAnsHandler, onAnswerSubmit}) {
         }else{
             onAnsHandler(3);
             onAnswerSubmit();
+            props.history.push('/result');
         }
     }
     const onClickHandler4 =()=>{
@@ -123,6 +126,7 @@ function QuestionPage({question, props, onAnsHandler, onAnswerSubmit}) {
         }else{
             onAnsHandler(4);
             onAnswerSubmit();
+            props.history.push('/result');
         }
     }
             return (

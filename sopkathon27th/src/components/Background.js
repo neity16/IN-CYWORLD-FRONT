@@ -9,7 +9,7 @@ const BackgroundTemplate = styled.img`
 
 function Background({children}) {
     return (
-            <BackgroundTemplate src='/images/Background.png'>
+            <BackgroundTemplate src='/images/Question_1.png'>
                 {children}
             </BackgroundTemplate>
     )
