@@ -72,10 +72,9 @@
 
 * Landing Page: 출생연도를 입력받고 테스트 시작하면 Question Page로 넘어감
 
-* Question Page: 
+* Question Page: 10개의 질문페이지에서 사용자에게 답을 입력받는다
 
-* Result Page: 결과공유 버튼을 누르면 클립보드에 url이 복사되도록 하고, 다시 도전 버튼을 누르면 landing page로 들어가도록 함
-
+* Result Page: 서버에서 결과를 넘겨 받아서 출력. 결과공유 버튼을 누르면 클립보드에 url이 복사되도록 하고, 다시 도전 버튼을 누르면 landing page로 돌아감.
 
 ## :earth_americas: Team Role 
 
