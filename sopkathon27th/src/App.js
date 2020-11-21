@@ -127,7 +127,7 @@ function App() {
   const [ans,SetAns] = useState([]);
   const [birthYear,setBirthYear] = useState("");
   const [object,setObject] = useState({
-      score: false,
+      score: 0,
       scoreRate : 0,
       levelNum: 0
   });
@@ -144,12 +144,12 @@ function App() {
       answers: ans
     }
     const result = await postAnswerAPI(object);
+    console.log(result);
     setObject({
       score: result.score,
       scoreRate: result.scoreRate,
       levelNum: result.levelNum
     });
-
   }
   return (
     <Router>
