@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Logo from "../images/logo-white-100.svg";
 import sketchbook from "../images/sketchbook.svg";
 
-function ResultPage() {
+function ResultPage({object}) {
     const link = window.location.href;
 
     const [leveldata, setLeveldata] = useState(0);
