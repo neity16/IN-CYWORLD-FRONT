@@ -4,26 +4,15 @@ import styled from "styled-components";
 import Logo from "../images/logo-white-100.svg";
 import sketchbook from "../images/sketchbook.svg";
 
-function ResultPage({object}) {
+function ResultPage({ object }) {
     const link = window.location.href;
-
+    const score = object.score;
+    const scoreRate = object.scoreRate;
+    const levelNum = object.levelNum;
     const [leveldata, setLeveldata] = useState(0);
-    const [userdata, setUserdata] = useState(0);
 
     const fetchData = async () => {
-        await fetch("http://15.165.86.166:3000/result/1").then((response) => {
-            if (response.status === 200) {
-                response.json().then((data) => {
-                    setLeveldata(data.data);
-                });
-            } else {
-                console.log("Error");
-            }
-        });
-    };
-
-    const fetchUser = async () => {
-        await fetch("http://15.165.86.166:3000/user").then((response) => {
+        await fetch(`http://15.165.86.166:3000/result/1`).then((response) => {
             if (response.status === 200) {
                 response.json().then((data) => {
                     setLeveldata(data.data);
@@ -36,7 +25,6 @@ function ResultPage({object}) {
 
     useEffect(() => {
         fetchData();
-        fetchUser();
     }, []);
 
     return (
@@ -48,8 +36,8 @@ function ResultPage({object}) {
                     </div>
                     <div>당신의 인-싸이월드 테스트 결과는?</div>
                     <div>
-                        <div>{userdata.score}</div>
-                        <div>{userdata.scoreRate}</div>
+                        <div>{score}</div>
+                        <div>{scoreRate}</div>
                     </div>
                 </div>
                 <div>
@@ -60,6 +48,7 @@ function ResultPage({object}) {
                     <div>{leveldata.guide}</div>
                     <img src={sketchbook}></img>
                 </div>
+                <div>Lv.{levelNum}인 당신을 위한 추천 영상</div>
                 <div>
                     <section className="player">
                         <iframe
@@ -73,9 +62,11 @@ function ResultPage({object}) {
                         ></iframe>
                     </section>
                 </div>
-                {/* <CopyToClipboard text={link}>
-                    <button>결과 공유하기</button>
-                </CopyToClipboard> */}
+                <div>
+                    <CopyToClipboard text={link}>
+                        <button>결과 공유하기</button>
+                    </CopyToClipboard>
+                </div>
                 <div>안녕하세요</div>
             </StyledResult>
         </div>
@@ -186,11 +177,21 @@ const StyledResult = styled.div`
         position: absolute;
         width: 1064px;
         height: 599px;
-        left: 428px;
-        top: 1613px;
+        left: 450px;
+        top: 1513px;
+        color: #ff6600;
+        font-size: 48px;
+        line-height: 71px;
     }
 
     & > div:nth-child(4) {
+        position: absolute;
+        left: 350px;
+        top: 1613px;
+        border: 4px solid #ff6600;
+    }
+
+    & > div:nth-child(5) {
         height: 897px;
         margin-top: 127px;
         background-color: black;
