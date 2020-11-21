@@ -15,6 +15,25 @@
 * Z세대들, 그대들은 90년대생에 대해 얼마나 알고 있는가?!
 지금 당장 인-싸이월드 테스트로 그대의 세대 감수성을 시험하라! 
 
+## :exclamation: 서비스 핵심기능 소개
+
+* 자신의 출생연도를 입력하고 테스트를 진행한다
+
+* 테스트 결과에 따라 레벨을 4단계로 나누어 자신의 레벨을 보여준다.
+
+* 레벨에 따른 영상을 추천해준다!
+
+## :closed_book: 사용 기술/라이브러리
+
+## :muscle: 구현 정도
+
+* Landing Page: 
+
+* Question Page: 
+
+* Result Page:
+
+
 ## :earth_americas: Team Role 
 
 #### :surfing_woman: 김민지
