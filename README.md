@@ -4,8 +4,6 @@
 
 * 프로젝트 기간: 2020.11.21 ~ 2020.11.22
 
-![GIF](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd2dhuj%2FbtqN5gmAFqJ%2FyL1IpLviiK5jyBRZN2Z8Q0%2Fimg.gif)
-
 ## :bookmark_tabs: 프로젝트 설명
 
 * Z세대 
