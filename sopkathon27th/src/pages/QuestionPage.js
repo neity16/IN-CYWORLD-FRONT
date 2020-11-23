@@ -8,35 +8,37 @@ const BodyTemplate = styled.div`
     flex-direction: column;
     align-items: center;
 `;
+
 const QuestionNumber = styled.div`
     width: 100%;
-    font-size: 42px;
+    font-size: 4.2rem;
     color: #FF6600;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 1.5rem;
     text-decoration: underline;
+    text-underline-offset: 0.5rem;
 `;
 const QuestionDesc = styled.div`
     width:100%;
-    height:50px;
-    font-size: 34px;
+    height:5rem;
+    font-size: 3.4rem;
     font-weight: bold;
     text-align: center;
 `;
 const Image = styled.img`
     width: auto;
-    height: 260px;
-    margin-top:20px;
-    border-radius: 10px;
+    height: 26rem;
+    margin-top:2rem;
+    border-radius: 1rem;
 `;
 const ButtonBox = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-top: 20px;
+    margin-top: 2rem;
 `;
 const ButtonDesc = styled.div`
-    font-size: 24px;
+    font-size: 2.4rem;
     color: white;
     font-weight: bold;
 `;
@@ -44,10 +46,11 @@ const ButtonImg = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
-    padding: 6px;
-    margin: 0 20px;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    padding: 0.6rem;
+    margin: 0 2rem;
     background-color: white;
     border-radius: 50%;
     color: #FF6600;
@@ -55,14 +58,14 @@ const ButtonImg = styled.div`
 const Button = styled.div`
     display: flex;
     align-items: center;
-    width: 400px;
-    height:70px;
-    margin: 10px;
+    width: 40rem;
+    height:7rem;
+    margin: 1rem;
     background: #FF6600;
-    border-radius: 20px;
+    border-radius: 2rem;
     text-align: center;
     position: relative;
-    border: solid 3px #FF6600;
+    border: solid 0.3rem #FF6600;
     cursor: pointer; 
     &:hover{
         ${ButtonDesc}{
@@ -70,7 +73,7 @@ const Button = styled.div`
             background-color: white;
         }
         background-color: white;
-        border: solid 3px #FF6600;
+        border: solid 0.3rem #FF6600;
         ${ButtonImg}{
             background-color: #FF6600;
             color: white;
@@ -78,17 +81,15 @@ const Button = styled.div`
     }
 `;
 const Template = styled.div`
-    width: 64%;
-    height: 64%;
-    position: absolute;
-    top: 160px;
-    left: 300px;
+    //padding: 10% 18%;
+    width: 100%;
+    height: 100%;
+/*     position: relative;
+    top: 30%;
+    left: 20%; */
 `;
 function QuestionPage({question, props, onAnsHandler, onAnswerSubmit}) {
     const inputIdx = Number(props.match.params.idx);
-    const [chIdx,setChIdx] = useState(0);
-    const [name,setName] = useState("");
-    const [comment,setComment] = useState("");
 
     const onClickHandler1 =()=>{
         if(inputIdx !== 10){
@@ -132,34 +133,35 @@ function QuestionPage({question, props, onAnsHandler, onAnswerSubmit}) {
     }
             return (
                 <>
-                    <Background />
-                    <Template>
-                        <BodyTemplate>
-                            <QuestionNumber>{`Q${question[inputIdx-1].idx}`}</QuestionNumber>
-                            <QuestionDesc>
-                                {question[inputIdx-1].desc}
-                            </QuestionDesc>
-                            <Image src={question[inputIdx-1].img}></Image>
-                            <ButtonBox>
-                                <Button onClick={onClickHandler1}>
-                                    <ButtonImg><i class="fas fa-check"></i></ButtonImg>
-                                    <ButtonDesc>{question[inputIdx-1].bogi[0]}</ButtonDesc>
-                                </Button>
-                                <Button onClick={onClickHandler2}>
-                                    <ButtonImg><i class="fas fa-check"></i></ButtonImg>
-                                    <ButtonDesc>{question[inputIdx-1].bogi[1]}</ButtonDesc>
-                                </Button>
-                                <Button onClick={onClickHandler3}>
-                                    <ButtonImg><i class="fas fa-check"></i></ButtonImg>
-                                    <ButtonDesc>{question[inputIdx-1].bogi[2]}</ButtonDesc>
-                                </Button>
-                                <Button onClick={onClickHandler4}>
-                                    <ButtonImg><i class="fas fa-check"></i></ButtonImg>
-                                    <ButtonDesc>{question[inputIdx-1].bogi[3]}</ButtonDesc>
-                                </Button>
-                            </ButtonBox>
-                        </BodyTemplate>
-                    </Template>
+                    <Background num={inputIdx}>
+                         <Template>
+                            <BodyTemplate>
+                                <QuestionNumber>{`Q${question[inputIdx-1].idx}`}</QuestionNumber>
+                                <QuestionDesc>
+                                    {question[inputIdx-1].desc}
+                                </QuestionDesc>
+                                <Image src={question[inputIdx-1].img}></Image>
+                                <ButtonBox>
+                                    <Button onClick={onClickHandler1}>
+                                        <ButtonImg><i class="fas fa-check"></i></ButtonImg>
+                                        <ButtonDesc>{question[inputIdx-1].bogi[0]}</ButtonDesc>
+                                    </Button>
+                                    <Button onClick={onClickHandler2}>
+                                        <ButtonImg><i class="fas fa-check"></i></ButtonImg>
+                                        <ButtonDesc>{question[inputIdx-1].bogi[1]}</ButtonDesc>
+                                    </Button>
+                                    <Button onClick={onClickHandler3}>
+                                        <ButtonImg><i class="fas fa-check"></i></ButtonImg>
+                                        <ButtonDesc>{question[inputIdx-1].bogi[2]}</ButtonDesc>
+                                    </Button>
+                                    <Button onClick={onClickHandler4}>
+                                        <ButtonImg><i class="fas fa-check"></i></ButtonImg>
+                                        <ButtonDesc>{question[inputIdx-1].bogi[3]}</ButtonDesc>
+                                    </Button>
+                                </ButtonBox>
+                            </BodyTemplate>
+                        </Template> 
+                    </Background>
                 </>
             )
 }

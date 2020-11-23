@@ -20,6 +20,10 @@ const Button = styled.button`
     border-radius: 20px;
     padding-bottom: 10px;
     margin-right: 50px;
+    cursor: pointer;
+    &:hover{
+        background: #ff4000;
+    }
 `;
 function ResultPage({ object ,props}) {
     const link = window.location.href;

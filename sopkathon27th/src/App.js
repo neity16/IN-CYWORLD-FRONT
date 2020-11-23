@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import ResultPage from './pages/ResultPage';
-import Question from './pages/questionPage/Question';
 import QuestionPage from './pages/QuestionPage';
 import {postAnswerAPI} from './lib/api/Answer';
 
