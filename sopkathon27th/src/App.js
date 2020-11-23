@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import ResultPage from './pages/ResultPage';
-import Question from './pages/questionPage/Question';
 import QuestionPage from './pages/QuestionPage';
 import {postAnswerAPI} from './lib/api/Answer';
 
@@ -123,6 +122,7 @@ const question = [
   
 ]
 
+
 function App() {
   const [ans,SetAns] = useState([]);
   const [birthYear,setBirthYear] = useState("");
@@ -156,7 +156,9 @@ function App() {
         <Switch>
         <Route exact path='/' render={(props)=>(<LandingPage onBirthHandler={onBirthHandler} props={props}/>)}></Route>
           {/* <Route exact path='/' component={LandingPage} ></Route> */}
-          <Route exact path='/result' render={(props)=>(<ResultPage props={props} object={object}/>)}></Route>
+          { object.levelNum &&
+            <Route exact path='/result' render={(props)=>(<ResultPage props={props} object={object}/>)}></Route>
+          }
           {/* <Route exact path='/result/:idx' component={ResultPage}></Route> */}
           <Route exact path='/question/:idx' render={(props)=>(<QuestionPage onAnswerSubmit={onAnswerSubmit} onAnsHandler={onAnsHandler} props={props} question={question}/>)}></Route>
           {/* <Route exact path='/question/:idx' ></Route> */}

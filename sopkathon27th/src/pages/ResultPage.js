@@ -4,15 +4,38 @@ import styled from "styled-components";
 import Logo from "../images/logo-white-100.svg";
 import sketchbook from "../images/sketchbook.svg";
 
-function ResultPage({ object }) {
+const Button = styled.button`
+    width: 260px;
+    height: 62px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    line-height: 62px;
+    color: white;
+    background: rgba(0,0,0,0.01);
+    position: relative;
+    left: 500px;
+    top: 200px;
+    border: solid white 3px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    margin-right: 50px;
+    cursor: pointer;
+    &:hover{
+        background: #ff4000;
+    }
+`;
+function ResultPage({ object ,props}) {
     const link = window.location.href;
     const score = object.score;
     const scoreRate = object.scoreRate;
     const levelNum = object.levelNum;
+    let number = String(scoreRate);
+    let numberValue = number.substring(0, 2);
     const [leveldata, setLeveldata] = useState(0);
 
     const fetchData = async () => {
-        await fetch(`http://15.165.86.166:3000/result/1`).then((response) => {
+        await fetch(`http://15.165.86.166:3000/result/${object.levelNum}`).then((response) => {
             if (response.status === 200) {
                 response.json().then((data) => {
                     setLeveldata(data.data);
@@ -22,12 +45,18 @@ function ResultPage({ object }) {
             }
         });
     };
-
+    const onHandleAgain = ()=>{
+        props.history.push('/');
+    }
     useEffect(() => {
         fetchData();
+        //console.log(object);
     }, []);
 
     return (
+        <>
+        {     
+            leveldata &&
         <div>
             <StyledResult>
                 <div>
@@ -36,8 +65,8 @@ function ResultPage({ object }) {
                     </div>
                     <div>당신의 인-싸이월드 테스트 결과는?</div>
                     <div>
-                        <div>{score}</div>
-                        <div>{scoreRate}</div>
+                        <div>{score}점</div>
+                        <div>동년배 중 상위 {numberValue}%</div>
                     </div>
                 </div>
                 <div>
@@ -63,13 +92,18 @@ function ResultPage({ object }) {
                     </section>
                 </div>
                 <div>
-                    <CopyToClipboard text={link}>
-                        <button>결과 공유하기</button>
-                    </CopyToClipboard>
+
                 </div>
-                <div>안녕하세요</div>
+                <div>
+                <CopyToClipboard text={link}>
+                    <Button>결과 공유하기</Button>
+                    </CopyToClipboard>
+                    <Button onClick={onHandleAgain} >다시 하기</Button>
+                </div>
             </StyledResult>
-        </div>
+        </div>  
+}
+</>
     );
 }
 
@@ -107,6 +141,11 @@ const StyledResult = styled.div`
         border: 2px solid #ffffff;
         box-sizing: border-box;
         border-radius: 20px;
+        font-size: 54px;
+        line-height: 80px;
+        /* identical to box height */
+        text-align: center;
+        padding: 2px;
     }
 
     & > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) {
@@ -119,6 +158,12 @@ const StyledResult = styled.div`
         border: 2px solid #ffffff;
         box-sizing: border-box;
         border-radius: 20px;
+        font-size: 54px;
+        line-height: 80px;
+        /* identical to box height */
+        text-align: center;
+        margin-left: 10px;
+        padding: 2px;
     }
 
     & > div:nth-child(2) {

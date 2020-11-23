@@ -1,15 +1,21 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
-const BackgroundTemplate = styled.img`
-    width: 100%;
-    height: 100%;
+const BackgroundTemplate = styled.div`
     position: relative;
+    ${props =>
+        css`
+         background-image: url('/images/Question_${props.num}.png');   
+        `
+    }
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 9.1%;
 `;
 
-function Background({children}) {
+function Background({children, num}) {
     return (
-            <BackgroundTemplate src='/images/Question_1.png'>
+            <BackgroundTemplate num={num}>
                 {children}
             </BackgroundTemplate>
     )
