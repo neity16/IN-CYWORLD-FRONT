@@ -1,54 +1,39 @@
-.background{
-    max-width: 100%;
-    height: auto;
-}
-.root{
+.root {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin:0;
+    margin: 0;
+    padding-top: 45%;
+    padding-bottom: 5%;
+    background-image: url("../images/landing.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }
-.title{
-    display: flex;
-    margin: 5%;
-    align-items: center;
-    justify-content: center;
 
-    &__text{
-    }
-    &__image{
-        width: 80px;
-        height: 80px;
-        object-fit: contain;
-    }
-}
-.input{
+.input {
+    flex: 1;
     display: flex;
-    position: absolute;
     flex-direction: row;
     justify-content: center;
-    bottom:-10%;
-    width:100%;
-    &__text{
-        margin:0px;
-        padding-left:26px;
-        width:428px;
-        height: 82px;
-        font-size:32px;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        border-right: none;
-        border: solid 2px white;
-    }
-    &__button{
+    &__text {
         margin: 0px;
-        width:242px;
-        height: 88px;
-        font-size: 32px;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        border: solid 2px white;
+        padding-left: 3.7rem;
+        width: 61rem;
+        height: 11.7rem;
+        font-size: 4.6rem;
+        border-top-left-radius: 1.4rem;
+        border-bottom-left-radius: 1.4rem;
+        border-right: none;
+        border: solid 0.3rem white;
+    }
+    &__button {
+        margin: 0px;
+        width: 34.6rem;
+        height: 12.6rem;
+        font-size: 4.6rem;
+        border-top-right-radius: 1.4rem;
+        border-bottom-right-radius: 1.4rem;
+        border: solid 0.3rem white;
         border-left: none;
     }
 }
-
