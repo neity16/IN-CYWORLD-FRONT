@@ -88,47 +88,47 @@ const Template = styled.div`
     top: 30%;
     left: 20%; */
 `;
-function QuestionPage({question, props, onAnsHandler, onAnswerSubmit}) {
-    const inputIdx = Number(props.match.params.idx);
+function QuestionPage({question, match, history, onAnsHandler, onAnswerSubmit}) {
+    const inputIdx = Number(match.params.idx);
 
     const onClickHandler1 =()=>{
         if(inputIdx !== 10){
             onAnsHandler(1);
-            props.history.push(`/question/${inputIdx+1}`);
+            history.push(`/question/${inputIdx+1}`);
         }else{
             onAnsHandler(1);
             onAnswerSubmit();
-            props.history.push('/result');
+            history.push('/result');
         }
     }
     const onClickHandler2 =()=>{
         if(inputIdx !== 10){
             onAnsHandler(2);
-            props.history.push(`/question/${inputIdx+1}`);
+            history.push(`/question/${inputIdx+1}`);
         }else{
             onAnsHandler(2);
             onAnswerSubmit();
-            props.history.push('/result');
+            history.push('/result');
         }
     }
     const onClickHandler3 =()=>{
         if(inputIdx !== 10){
             onAnsHandler(3);
-            props.history.push(`/question/${inputIdx+1}`);
+            history.push(`/question/${inputIdx+1}`);
         }else{
             onAnsHandler(3);
             onAnswerSubmit();
-            props.history.push('/result');
+            history.push('/result');
         }
     }
     const onClickHandler4 =()=>{
         if(inputIdx !== 10){
             onAnsHandler(4);
-            props.history.push(`/question/${inputIdx+1}`);
+            history.push(`/question/${inputIdx+1}`);
         }else{
             onAnsHandler(4);
             onAnswerSubmit();
-            props.history.push('/result');
+            history.push('/result');
         }
     }
             return (

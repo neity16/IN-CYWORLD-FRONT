@@ -160,7 +160,7 @@ function App() {
             <Route exact path='/result' render={(props)=>(<ResultPage props={props} object={object}/>)}></Route>
           }
           {/* <Route exact path='/result/:idx' component={ResultPage}></Route> */}
-          <Route exact path='/question/:idx' render={(props)=>(<QuestionPage onAnswerSubmit={onAnswerSubmit} onAnsHandler={onAnsHandler} props={props} question={question}/>)}></Route>
+          <Route exact path='/question/:idx' render={(props)=>(<QuestionPage onAnswerSubmit={onAnswerSubmit} onAnsHandler={onAnsHandler} /* props={props} */ question={question}/>)}></Route>
           {/* <Route exact path='/question/:idx' ></Route> */}
           {/* <Route path='/question/:idx' component={Question}></Route> */}
           <Route path='/*'>404 NOT FOUND</Route>
