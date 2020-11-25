@@ -25,7 +25,7 @@ const Button = styled.button`
         background: #ff4000;
     }
 `;
-function ResultPage({ object ,props}) {
+function ResultPage({ object ,props, onResetAns}) {
     const link = window.location.href;
     const score = object.score;
     const scoreRate = object.scoreRate;
@@ -47,6 +47,7 @@ function ResultPage({ object ,props}) {
     };
     const onHandleAgain = ()=>{
         props.history.push('/');
+        onResetAns();
     }
     useEffect(() => {
         fetchData();

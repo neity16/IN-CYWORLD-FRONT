@@ -125,8 +125,8 @@ const question = [
 
 function App() {
   const [ans,SetAns] = useState([]);
-  const [birthYear,setBirthYear] = useState("");
-  const [object,setObject] = useState({
+  const [birthYear,SetBirthYear] = useState("");
+  const [object,SetObject] = useState({
       score: 0,
       scoreRate : 0,
       levelNum: 0
@@ -136,7 +136,7 @@ function App() {
     console.log(ans);
   }
   const onBirthHandler = (data)=>{
-    setBirthYear(data);
+    SetBirthYear(data);
   };
   const onAnswerSubmit = async() => {
     const object = {
@@ -145,11 +145,15 @@ function App() {
     }
     const result = await postAnswerAPI(object);
     console.log(result);
-    setObject({
+    SetObject({
       score: result.score,
       scoreRate: result.scoreRate,
       levelNum: result.levelNum
     });
+  }
+  const onResetAns = () => {
+    SetAns([]);
+    SetBirthYear("");
   }
   return (
     <Router>
@@ -157,10 +161,10 @@ function App() {
         <Route exact path='/' render={(props)=>(<LandingPage onBirthHandler={onBirthHandler} props={props}/>)}></Route>
           {/* <Route exact path='/' component={LandingPage} ></Route> */}
           { object.levelNum &&
-            <Route exact path='/result' render={(props)=>(<ResultPage props={props} object={object}/>)}></Route>
+            <Route exact path='/result' render={(props)=>(<ResultPage props={props} onResetAns={onResetAns} object={object}/>)}></Route>
           }
           {/* <Route exact path='/result/:idx' component={ResultPage}></Route> */}
-          <Route exact path='/question/:idx' render={(props)=>(<QuestionPage onAnswerSubmit={onAnswerSubmit} onAnsHandler={onAnsHandler} props={props} question={question}/>)}></Route>
+          <Route exact path='/question/:idx' render={(props)=>(<QuestionPage onAnswerSubmit={onAnswerSubmit} onAnsHandler={onAnsHandler} /* props={props} */ question={question}/>)}></Route>
           {/* <Route exact path='/question/:idx' ></Route> */}
           {/* <Route path='/question/:idx' component={Question}></Route> */}
           <Route path='/*'>404 NOT FOUND</Route>

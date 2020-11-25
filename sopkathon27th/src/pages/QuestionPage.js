@@ -1,4 +1,4 @@
-import React ,{useState}from 'react'
+import React ,{useEffect}from 'react'
 import { Route, withRouter } from "react-router-dom"; 
 import styled from 'styled-components';
 import Background from '../components/Background';
@@ -88,51 +88,62 @@ const Template = styled.div`
     top: 30%;
     left: 20%; */
 `;
-function QuestionPage({question, props, onAnsHandler, onAnswerSubmit}) {
-    const inputIdx = Number(props.match.params.idx);
+const PageIndexError = styled.div`
+    font-size: 50px;
+    font-weight: bold;
+`;
+function QuestionPage({question, match, history, onAnsHandler, onAnswerSubmit}) {
+    const inputIdx = Number(match.params.idx);
 
-    const onClickHandler1 =()=>{
+    const onClickHandler =(e)=>{
+        /* 이벤트 버블링 때문에 e.target.attributes.id.value 하면 가끔 undefinded가 뜬다! */
+        //onAnsHandler(Number(e.currentTarget.getAttribute('id')));
+        onAnsHandler(Number(e.currentTarget.attributes.id.value));
+        //console.log(e.currentTarget); 
         if(inputIdx !== 10){
-            onAnsHandler(1);
-            props.history.push(`/question/${inputIdx+1}`);
+            history.push(`/question/${inputIdx+1}`);
         }else{
-            onAnsHandler(1);
             onAnswerSubmit();
-            props.history.push('/result');
-        }
+            history.push('/result');
+        }  
     }
-    const onClickHandler2 =()=>{
+    const onLoadHandler = ()=>{
+        history.push('/');
+    }
+/*     const onClickHandler2 =()=>{
         if(inputIdx !== 10){
             onAnsHandler(2);
-            props.history.push(`/question/${inputIdx+1}`);
+            history.push(`/question/${inputIdx+1}`);
         }else{
             onAnsHandler(2);
             onAnswerSubmit();
-            props.history.push('/result');
+            history.push('/result');
         }
     }
-    const onClickHandler3 =()=>{
+    const onClickHandler3 =()=>{$
         if(inputIdx !== 10){
             onAnsHandler(3);
-            props.history.push(`/question/${inputIdx+1}`);
+            history.push(`/question/${inputIdx+1}`);
         }else{
             onAnsHandler(3);
             onAnswerSubmit();
-            props.history.push('/result');
+            history.push('/result');
         }
     }
     const onClickHandler4 =()=>{
         if(inputIdx !== 10){
             onAnsHandler(4);
-            props.history.push(`/question/${inputIdx+1}`);
+            history.push(`/question/${inputIdx+1}`);
         }else{
             onAnsHandler(4);
             onAnswerSubmit();
-            props.history.push('/result');
+            history.push('/result');
         }
-    }
-            return (
+    } */
+    return (            
                 <>
+                {
+                    (inputIdx > 0 && inputIdx < 11) ?
                     <Background num={inputIdx}>
                          <Template>
                             <BodyTemplate>
@@ -142,27 +153,29 @@ function QuestionPage({question, props, onAnsHandler, onAnswerSubmit}) {
                                 </QuestionDesc>
                                 <Image src={question[inputIdx-1].img}></Image>
                                 <ButtonBox>
-                                    <Button onClick={onClickHandler1}>
+                                    <Button id={1} onClick={onClickHandler} >
                                         <ButtonImg><i class="fas fa-check"></i></ButtonImg>
                                         <ButtonDesc>{question[inputIdx-1].bogi[0]}</ButtonDesc>
                                     </Button>
-                                    <Button onClick={onClickHandler2}>
+                                    <Button id={2} onClick={onClickHandler}>
                                         <ButtonImg><i class="fas fa-check"></i></ButtonImg>
                                         <ButtonDesc>{question[inputIdx-1].bogi[1]}</ButtonDesc>
                                     </Button>
-                                    <Button onClick={onClickHandler3}>
+                                    <Button id={3} onClick={onClickHandler}>
                                         <ButtonImg><i class="fas fa-check"></i></ButtonImg>
                                         <ButtonDesc>{question[inputIdx-1].bogi[2]}</ButtonDesc>
                                     </Button>
-                                    <Button onClick={onClickHandler4}>
+                                    <Button id={4} onClick={onClickHandler}>
                                         <ButtonImg><i class="fas fa-check"></i></ButtonImg>
-                                        <ButtonDesc>{question[inputIdx-1].bogi[3]}</ButtonDesc>
+                                        <ButtonDesc >{question[inputIdx-1].bogi[3]}</ButtonDesc>
                                     </Button>
                                 </ButtonBox>
                             </BodyTemplate>
                         </Template> 
                     </Background>
-                </>
+                    : <PageIndexError onLoad={onLoadHandler}> Page Index Error!</PageIndexError>
+                }
+                </> 
             )
 }
 
