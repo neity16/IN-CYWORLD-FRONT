@@ -9,7 +9,6 @@ const BackgroundTemplate = styled.div`
         `
     }
     background-size: 100% 100%;
-    background-repeat: no-repeat;
     padding: 9.1%;
 `;
 
