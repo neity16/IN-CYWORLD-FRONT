@@ -1,4 +1,4 @@
-import React ,{useEffect}from 'react'
+import React ,{useEffect, memo} from 'react'
 import { Route, withRouter } from "react-router-dom"; 
 import styled from 'styled-components';
 import Background from '../components/Background';
@@ -95,15 +95,16 @@ const PageIndexError = styled.div`
 function QuestionPage({question, match, history, onAnsHandler, onAnswerSubmit}) {
     const inputIdx = Number(match.params.idx);
 
-    const onClickHandler =(e)=>{
+    const onClickHandler = (e)=>{
         /* 이벤트 버블링 때문에 e.target.attributes.id.value 하면 가끔 undefinded가 뜬다! */
         //onAnsHandler(Number(e.currentTarget.getAttribute('id')));
-        onAnsHandler(Number(e.currentTarget.attributes.id.value));
+        onAnsHandler(inputIdx, Number(e.currentTarget.attributes.id.value));
         //console.log(e.currentTarget); 
+
         if(inputIdx !== 10){
             history.push(`/question/${inputIdx+1}`);
         }else{
-            onAnswerSubmit();
+            //onAnswerSubmit();
             history.push('/result');
         }  
     }

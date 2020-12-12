@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   BrowserRouter as Router, Route, Switch
 } from 'react-router-dom';
@@ -119,21 +119,38 @@ const question = [
     ],
     img : "https://ww.namu.la/s/ae4a8766e3960bb33428e28eeb5ba268d900c1279bcd59bedc8f1764a5baa7735fc738bd9d975863849ff8f145698cd9c063c6d772b4967d1256c4ce5718948a806b7645d11fc7d929f2c60eb8825284ecad5782eb85c0a560d3752167b64af1"
   },
-  
 ]
 
 
 function App() {
-  const [ans,SetAns] = useState([]);
+  const [ans,SetAns] = useState([0,0,0,0,0,0,0,0,0,0]);
   const [birthYear,SetBirthYear] = useState("");
   const [object,SetObject] = useState({
       score: 0,
       scoreRate : 0,
       levelNum: 0
   });
-  const onAnsHandler = (data)=>{
-    SetAns([...ans, data]);
-    console.log(ans);
+  /* setAns 비동기 처리가 안되서 일단 이렇게 결과를 서버에 보내게 했음 */
+  useEffect(()=>{
+    if(ans[9] !== 0){
+      onAnswerSubmit();
+    }
+  },[ans]);
+
+  const onAnsHandler = (page, data)=>{
+    const change = ans.map((d, i)=>{
+      if(page-1 === i){
+       return  data;
+     }else{
+       return d;
+     }
+    });
+    //console.log(change);
+    //SetAns(change);
+    (function test(c){
+      SetAns(c);
+    })(change); 
+    //console.log(ans);
   }
   const onBirthHandler = (data)=>{
     SetBirthYear(data);
@@ -143,8 +160,8 @@ function App() {
       birthYear: birthYear,
       answers: ans
     }
+    //console.log(object);
     const result = await postAnswerAPI(object);
-    console.log(result);
     SetObject({
       score: result.score,
       scoreRate: result.scoreRate,
@@ -152,7 +169,7 @@ function App() {
     });
   }
   const onResetAns = () => {
-    SetAns([]);
+    SetAns([0,0,0,0,0,0,0,0,0,0]);
     SetBirthYear("");
   }
   return (
