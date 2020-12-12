@@ -103,7 +103,7 @@ function ResultPage({ object ,props, onResetAns}) {
                 </div>
             </StyledResult>
         </div>  
-}
+    }
 </>
     );
 }
