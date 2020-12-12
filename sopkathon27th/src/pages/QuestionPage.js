@@ -8,7 +8,6 @@ const BodyTemplate = styled.div`
     flex-direction: column;
     align-items: center;
 `;
-
 const QuestionNumber = styled.div`
     width: 100%;
     font-size: 4.2rem;
@@ -92,6 +91,7 @@ const PageIndexError = styled.div`
     font-size: 50px;
     font-weight: bold;
 `;
+
 function QuestionPage({question, match, history, onAnsHandler, onAnswerSubmit}) {
     const inputIdx = Number(match.params.idx);
 
@@ -99,11 +99,11 @@ function QuestionPage({question, match, history, onAnsHandler, onAnswerSubmit}) 
         /* 이벤트 버블링 때문에 e.target.attributes.id.value 하면 가끔 undefinded가 뜬다! */
         //onAnsHandler(Number(e.currentTarget.getAttribute('id')));
         onAnsHandler(inputIdx, Number(e.currentTarget.attributes.id.value));
-        //console.log(e.currentTarget); 
 
         if(inputIdx !== 10){
             history.push(`/question/${inputIdx+1}`);
         }else{
+            /* 마지막 버튼 클릭하면 App.js에 저장된 ans를 서버에 보내는 코드 */
             //onAnswerSubmit();
             history.push('/result');
         }  
@@ -111,36 +111,7 @@ function QuestionPage({question, match, history, onAnsHandler, onAnswerSubmit}) 
     const onLoadHandler = ()=>{
         history.push('/');
     }
-/*     const onClickHandler2 =()=>{
-        if(inputIdx !== 10){
-            onAnsHandler(2);
-            history.push(`/question/${inputIdx+1}`);
-        }else{
-            onAnsHandler(2);
-            onAnswerSubmit();
-            history.push('/result');
-        }
-    }
-    const onClickHandler3 =()=>{$
-        if(inputIdx !== 10){
-            onAnsHandler(3);
-            history.push(`/question/${inputIdx+1}`);
-        }else{
-            onAnsHandler(3);
-            onAnswerSubmit();
-            history.push('/result');
-        }
-    }
-    const onClickHandler4 =()=>{
-        if(inputIdx !== 10){
-            onAnsHandler(4);
-            history.push(`/question/${inputIdx+1}`);
-        }else{
-            onAnsHandler(4);
-            onAnswerSubmit();
-            history.push('/result');
-        }
-    } */
+
     return (            
                 <>
                 {
@@ -179,5 +150,4 @@ function QuestionPage({question, match, history, onAnsHandler, onAnswerSubmit}) 
                 </> 
             )
 }
-
 export default withRouter(QuestionPage);

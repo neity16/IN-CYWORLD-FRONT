@@ -131,11 +131,11 @@ function App() {
       levelNum: 0
   });
   /* setAns 비동기 처리가 안되서 일단 이렇게 결과를 서버에 보내게 했음 */
-  useEffect(()=>{
+    useEffect(()=>{
     if(ans[9] !== 0){
       onAnswerSubmit();
     }
-  },[ans]);
+  },[ans]);  
 
   const onAnsHandler = (page, data)=>{
     const change = ans.map((d, i)=>{
@@ -147,9 +147,7 @@ function App() {
     });
     //console.log(change);
     //SetAns(change);
-    (function test(c){
-      SetAns(c);
-    })(change); 
+    SetAns(change, ()=> console.log(ans));
     //console.log(ans);
   }
   const onBirthHandler = (data)=>{
@@ -160,7 +158,7 @@ function App() {
       birthYear: birthYear,
       answers: ans
     }
-    //console.log(object);
+    console.log(ans);
     const result = await postAnswerAPI(object);
     SetObject({
       score: result.score,
@@ -176,14 +174,10 @@ function App() {
     <Router>
         <Switch>
         <Route exact path='/' render={(props)=>(<LandingPage onBirthHandler={onBirthHandler} props={props}/>)}></Route>
-          {/* <Route exact path='/' component={LandingPage} ></Route> */}
           { object.levelNum &&
             <Route exact path='/result' render={(props)=>(<ResultPage props={props} onResetAns={onResetAns} object={object}/>)}></Route>
           }
-          {/* <Route exact path='/result/:idx' component={ResultPage}></Route> */}
-          <Route exact path='/question/:idx' render={(props)=>(<QuestionPage onAnswerSubmit={onAnswerSubmit} onAnsHandler={onAnsHandler} /* props={props} */ question={question}/>)}></Route>
-          {/* <Route exact path='/question/:idx' ></Route> */}
-          {/* <Route path='/question/:idx' component={Question}></Route> */}
+          <Route exact path='/question/:idx' render={(props)=>(<QuestionPage onAnswerSubmit={onAnswerSubmit} onAnsHandler={onAnsHandler} question={question}/>)}></Route>
           <Route path='/*'>404 NOT FOUND</Route>
         </Switch>
     </Router>
