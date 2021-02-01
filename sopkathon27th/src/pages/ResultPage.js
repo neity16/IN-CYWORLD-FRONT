@@ -36,7 +36,7 @@ function ResultPage({ object, props, onResetAns }) {
     leveldata: null,
     status: "idle",
   });
-
+  /* test */
   const fetchData = async () => {
     setLevelStatus({
       ...levelStatus,
