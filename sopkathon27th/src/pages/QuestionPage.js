@@ -1,7 +1,7 @@
-import React, { useEffect, memo } from "react";
-import { Route, withRouter } from "react-router-dom";
-import styled from "styled-components";
-import Background from "../components/Background";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
+import Background from '../components/Background';
 
 const BodyTemplate = styled.div`
   display: flex;
@@ -95,7 +95,7 @@ const PageIndexError = styled.div`
 function QuestionPage({ question, match, history, onAnsHandler }) {
   const inputIdx = Number(match.params.idx);
 
-  const onClickHandler = (e) => {
+  const onClickHandler = e => {
     /* 이벤트 버블링 때문에 e.target.attributes.id.value 하면 가끔 undefinded가 뜬다! */
     //onAnsHandler(Number(e.currentTarget.getAttribute('id')));
     onAnsHandler(inputIdx, Number(e.currentTarget.attributes.id.value));
@@ -105,7 +105,7 @@ function QuestionPage({ question, match, history, onAnsHandler }) {
     }
   };
   const onLoadHandler = () => {
-    history.push("/");
+    history.push('/');
   };
 
   return (
@@ -114,9 +114,7 @@ function QuestionPage({ question, match, history, onAnsHandler }) {
         <Background num={inputIdx}>
           <Template>
             <BodyTemplate>
-              <QuestionNumber>{`Q${
-                question[inputIdx - 1].idx
-              }`}</QuestionNumber>
+              <QuestionNumber>{`Q${question[inputIdx - 1].idx}`}</QuestionNumber>
               <QuestionDesc>{question[inputIdx - 1].desc}</QuestionDesc>
               <Image src={question[inputIdx - 1].img}></Image>
               <ButtonBox>
@@ -149,10 +147,7 @@ function QuestionPage({ question, match, history, onAnsHandler }) {
           </Template>
         </Background>
       ) : (
-        <PageIndexError onLoad={onLoadHandler}>
-          {" "}
-          Page Index Error!
-        </PageIndexError>
+        <PageIndexError onLoad={onLoadHandler}> Page Index Error!</PageIndexError>
       )}
     </>
   );

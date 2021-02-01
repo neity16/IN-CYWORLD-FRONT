@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import styled from "styled-components";
-import Logo from "../images/logo-white-100.svg";
-import sketchbook from "../images/sketchbook.svg";
+import React, { useState, useEffect } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import styled from 'styled-components';
+import Logo from '../images/logo-white.svg';
+import sketchbook from '../images/sketchbook.svg';
 
 const Button = styled.button`
   width: 260px;
@@ -34,36 +34,34 @@ function ResultPage({ object, props, onResetAns }) {
   let numberValue = number.substring(0, 2);
   const [levelStatus, setLevelStatus] = useState({
     leveldata: null,
-    status: "idle",
+    status: 'idle',
   });
   /* test */
   const fetchData = async () => {
     setLevelStatus({
       ...levelStatus,
-      status: "pending",
+      status: 'pending',
     });
-    await fetch(`http://15.165.86.166:3000/result/${levelNum}`).then(
-      (response) => {
-        if (response.status === 200) {
-          response.json().then((data) => {
-            console.log(data);
-            setLevelStatus({
-              leveldata: data.data,
-              status: "resolved",
-            });
-          });
-        } else {
-          console.log("Error");
+    await fetch(`http://15.165.86.166:3000/result/${levelNum}`).then(response => {
+      if (response.status === 200) {
+        response.json().then(data => {
+          // console.log(data);
           setLevelStatus({
-            ...levelStatus,
-            status: "idle",
+            leveldata: data.data,
+            status: 'resolved',
           });
-        }
+        });
+      } else {
+        // console.log('Error');
+        setLevelStatus({
+          ...levelStatus,
+          status: 'idle',
+        });
       }
-    );
+    });
   };
   const onHandleAgain = () => {
-    props.history.push("/");
+    props.history.push('/');
     onResetAns();
   };
   useEffect(() => {
@@ -71,9 +69,9 @@ function ResultPage({ object, props, onResetAns }) {
   }, []);
 
   switch (levelStatus.status) {
-    case "pending":
+    case 'pending':
       return <div>LOADING!</div>;
-    case "resolved":
+    case 'resolved':
       return (
         <>
           <div>
@@ -125,7 +123,7 @@ function ResultPage({ object, props, onResetAns }) {
           </div>
         </>
       );
-    case "idle":
+    case 'idle':
     default:
       return <div>idle status</div>;
   }
