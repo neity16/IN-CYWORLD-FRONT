@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import ResultPage from "./pages/ResultPage";
 import QuestionPage from "./pages/QuestionPage";
@@ -43,7 +44,7 @@ const question = [
       "차 문을 열고 코끼리 코를 돈다",
     ],
     img:
-      "https://ww.namu.la/s/d4c6c07240f4a99508ce14e6aacda9a2d54b9b2d61bd7db58c3a0a52e17f9129f413551fa77c4845e8d6947303f4dc4447a5ca20ee976601cf9ec277128f6fbe39fbdb0d3fb7b6c37e286f3cba1941fceae8578a0ef939901944ef0f1ca907a3db6826acd8e1013a611cc6e2326e82f5",
+      "https://images.velog.io/images/neity16/post/d8619e37-70bd-45a7-9764-a4b03a2f097f/d%20(4).jpg",
   },
   {
     idx: 5,
@@ -93,11 +94,11 @@ const question = [
       "세바스찬 주니어 3세",
     ],
     img:
-      "https://ww.namu.la/s/ae4a8766e3960bb33428e28eeb5ba268d900c1279bcd59bedc8f1764a5baa7735fc738bd9d975863849ff8f145698cd9c063c6d772b4967d1256c4ce5718948a806b7645d11fc7d929f2c60eb8825284ecad5782eb85c0a560d3752167b64af1",
+      "https://ww.namu.la/s/ae4a8766e3960bb33428e28eeb5ba268d900c1279bcd59bedc8f1764a5baa7735fc738bd9d975863849ff8f145698cd9c063c6d772b4967d1256c4ce5718948ab24f1a9c21120d6921e7dd84bb1235567c3870292b4e4f610c65fa22e7c8551d",
   },
 ];
 
-function App() {
+function App({ history, match }) {
   const [ans, SetAns] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [birthYear, SetBirthYear] = useState("");
   const [object, SetObject] = useState({
@@ -142,47 +143,49 @@ function App() {
       scoreRate: result.scoreRate,
       levelNum: result.levelNum,
     });
+    //console.log(history);
+    history.push(`/result/${result.levelNum}`);
   };
   const onResetAns = () => {
     SetAns([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     SetBirthYear("");
   };
   return (
-    <Router>
-      <Switch>
+    <Switch>
+      <Route
+        exact
+        path="/"
+        render={(props) => (
+          <LandingPage onBirthHandler={onBirthHandler} props={props} />
+        )}
+      ></Route>
+      {/* <Route exact path='/' component={LandingPage} ></Route> */}
+      {
         <Route
           exact
-          path="/"
-          render={(props) => (
-            <LandingPage onBirthHandler={onBirthHandler} props={props} />
-          )}
-        ></Route>
-        {/* <Route exact path='/' component={LandingPage} ></Route> */}
-        <Route
-          exact
-          path="/result"
+          path="/result/:levelNum"
           render={(props) => (
             <ResultPage props={props} onResetAns={onResetAns} object={object} />
           )}
         ></Route>
-        {/* <Route exact path='/result/:idx' component={ResultPage}></Route> */}
-        <Route
-          exact
-          path="/question/:idx"
-          render={(props) => (
-            <QuestionPage
-              onAnswerSubmit={onAnswerSubmit}
-              onAnsHandler={onAnsHandler}
-              /* props={props} */ question={question}
-            />
-          )}
-        ></Route>
-        {/* <Route exact path='/question/:idx' ></Route> */}
-        {/* <Route path='/question/:idx' component={Question}></Route> */}
-        <Route path="/*">404 NOT FOUND</Route>
-      </Switch>
-    </Router>
+      }
+      {/* <Route exact path='/result/:idx' component={ResultPage}></Route> */}
+      <Route
+        exact
+        path="/question/:idx"
+        render={(props) => (
+          <QuestionPage
+            onAnswerSubmit={onAnswerSubmit}
+            onAnsHandler={onAnsHandler}
+            /* props={props} */ question={question}
+          />
+        )}
+      ></Route>
+      {/* <Route exact path='/question/:idx' ></Route> */}
+      {/* <Route path='/question/:idx' component={Question}></Route> */}
+      <Route path="/*">404 NOT FOUND</Route>
+    </Switch>
   );
 }
 
-export default App;
+export default withRouter(App);

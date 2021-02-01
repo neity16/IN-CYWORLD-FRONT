@@ -29,11 +29,11 @@ function ResultPage({ object, props, onResetAns }) {
   const link = window.location.href;
   const score = object.score;
   const scoreRate = object.scoreRate;
-  const levelNum = object.levelNum;
+  const levelNum = props.match.params.levelNum;
   let number = String(scoreRate);
   let numberValue = number.substring(0, 2);
   const [levelStatus, setLevelStatus] = useState({
-    leveldata: 0,
+    leveldata: null,
     status: "idle",
   });
 
@@ -42,12 +42,13 @@ function ResultPage({ object, props, onResetAns }) {
       ...levelStatus,
       status: "pending",
     });
-    await fetch(`http://15.165.86.166:3000/result/${object.levelNum}`).then(
+    await fetch(`http://15.165.86.166:3000/result/${levelNum}`).then(
       (response) => {
         if (response.status === 200) {
           response.json().then((data) => {
+            console.log(data);
             setLevelStatus({
-              levelStatus: data.data,
+              leveldata: data.data,
               status: "resolved",
             });
           });
@@ -82,10 +83,14 @@ function ResultPage({ object, props, onResetAns }) {
                   <img alt="logo" src={Logo}></img>
                 </div>
                 <div>당신의 인-싸이월드 테스트 결과는?</div>
-                <div>
-                  <div>{score}점</div>
-                  <div>동년배 중 상위 {numberValue}%</div>
-                </div>
+                {score ? (
+                  <div>
+                    <div>{score}점</div>
+                    <div>동년배 중 상위 {numberValue}%</div>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
               </div>
               <div>
                 <div>{levelStatus.leveldata.title}</div>
