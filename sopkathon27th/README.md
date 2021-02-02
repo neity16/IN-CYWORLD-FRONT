@@ -66,10 +66,12 @@
  ┃ ┗ 📜result-background.png
  ┣ 📜favicon.ico
  ┗ 📜index.html
- 📦src
+📦src
  ┣ 📂components
  ┃ ┗ 📜Background.js
  ┣ 📂images
+ ┃ ┣ 📜btn-retry.svg
+ ┃ ┣ 📜btn-share.svg
  ┃ ┣ 📜landing.png
  ┃ ┣ 📜logo-color.svg
  ┃ ┣ 📜logo-white.svg
