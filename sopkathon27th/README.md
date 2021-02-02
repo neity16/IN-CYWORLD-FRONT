@@ -51,26 +51,47 @@
 ### 📂 프로젝트 구조
 
 ```
+📦public
+ ┣ 📂background
+ ┃ ┣ 📜Question_1.png
+ ┃ ┣ 📜Question_10.png
+ ┃ ┣ 📜Question_2.png
+ ┃ ┣ 📜Question_3.png
+ ┃ ┣ 📜Question_4.png
+ ┃ ┣ 📜Question_5.png
+ ┃ ┣ 📜Question_6.png
+ ┃ ┣ 📜Question_7.png
+ ┃ ┣ 📜Question_8.png
+ ┃ ┣ 📜Question_9.png
+ ┃ ┗ 📜result-background.png
+ ┣ 📜favicon.ico
+ ┗ 📜index.html
 📦src
-┣ 📂components
-┃ ┗ 📜Background.js
-┣ 📂images
-┃ ┣ 📜landing.png
-┃ ┣ 📜logo-color.svg
-┃ ┣ 📜logo-white.svg
-┃ ┣ 📜Question.png
-┃ ┗ 📜sketchbook.svg
-┣ 📂lib
-┃ ┗ 📂api
-┃ ┃ ┗ 📜Answer.js
-┣ 📂pages
-┃ ┣ 📜LandingPage.js
-┃ ┣ 📜QuestionPage.js
-┃ ┗ 📜ResultPage.js
-┣ 📜App.css
-┣ 📜App.js
-┣ 📜index.css
-┗ 📜index.js
+ ┣ 📂components
+ ┃ ┗ 📜Background.js
+ ┣ 📂images
+ ┃ ┣ 📜btn-retry.svg
+ ┃ ┣ 📜btn-share.svg
+ ┃ ┣ 📜landing.png
+ ┃ ┣ 📜logo-color.svg
+ ┃ ┣ 📜logo-white.svg
+ ┃ ┣ 📜result-sketchbook.png
+ ┃ ┗ 📜result-sketchbook.svg
+ ┣ 📂lib
+ ┃ ┗ 📂api
+ ┃ ┃ ┗ 📜Answer.js
+ ┣ 📂pages
+ ┃ ┣ 📜Landing.scss
+ ┃ ┣ 📜LandingPage.js
+ ┃ ┣ 📜QuestionPage.js
+ ┃ ┣ 📜RenewalResultPage.js
+ ┃ ┗ 📜ResultPage.js
+ ┣ 📜App.css
+ ┣ 📜App.js
+ ┣ 📜index.css
+ ┣ 📜index.js
+ ┣ 📜reportWebVitals.js
+ ┗ 📜setupTests.js
 ```
 
 ### :earth_americas: 담당 역할
