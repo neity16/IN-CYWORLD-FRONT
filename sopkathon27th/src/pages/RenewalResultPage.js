@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { ReactComponent as Logo } from '../images/logo-white.svg';
 import { ReactComponent as Sketchbook } from '../images/result-sketchbook.svg';
+import { ReactComponent as Share } from '../images/btn-share.svg';
+import { ReactComponent as Retry } from '../images/btn-retry.svg';
 
 const RenewalResultPage = ({ object, props, onResetAns }) => {
   const link = window.location.href;
@@ -51,6 +53,10 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
     onResetAns();
   };
 
+  const onHandleCopy = () => {
+    alert('클립보드에 테스트 결과가 복사되었습니다.');
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -86,7 +92,7 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
           </StyledSketchbook>
           <StyledVideo>
             <>
-              <StyledRecommend>Lv.{levelNum}인 당신을 위한 추천 영상</StyledRecommend>
+              <StyledRecommend>LV.{levelNum}인 당신을 위한 추천 영상</StyledRecommend>
               <StyledYoutube>
                 <iframe
                   width="100%"
@@ -100,7 +106,16 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
               </StyledYoutube>
             </>
           </StyledVideo>
-          <StyledButton></StyledButton>
+          <StyledButton>
+            <CopyToClipboard text={link}>
+              <div onClick={onHandleCopy}>
+                <Share />
+              </div>
+            </CopyToClipboard>
+            <div style={{ marginLeft: '11.6rem' }} onClick={onHandleAgain}>
+              <Retry />
+            </div>
+          </StyledButton>
         </StyledResult>
       );
     case 'idle':
@@ -117,7 +132,7 @@ const StyledLogo = styled.div`
   padding-top: 3.4rem;
   padding-left: 4rem;
 
-  div {
+  svg {
     width: 10rem;
     height: 10rem;
   }
@@ -244,6 +259,16 @@ const StyledYoutube = styled.div`
   margin: 0 auto;
 `;
 
-const StyledButton = styled.div``;
+const StyledButton = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 6.6rem;
+  padding-bottom: 6.6rem;
+
+  svg {
+    width: 36.3rem;
+    height: 12rem;
+  }
+`;
 
 export default RenewalResultPage;
