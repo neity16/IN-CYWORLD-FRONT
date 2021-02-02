@@ -2,25 +2,31 @@ html {
   font-size: 10px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1293px) {
   html {
     font-size: 7px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1084px) {
+  html {
+    font-size: 6px;
+  }
+}
+
+@media screen and (max-width: 828px) {
   html {
     font-size: 5px;
   }
 }
 
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 690px) {
   html {
     font-size: 4px;
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 540px) {
   html {
     font-size: 3px;
   }
