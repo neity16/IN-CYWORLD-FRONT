@@ -29,7 +29,7 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
       status: 'pending',
     });
 
-    await fetch(`http://15.165.86.166:3000/result/${levelNum}`).then(response => {
+    await fetch(`https://52.79.173.99:3000/result/${levelNum}`).then(response => {
       if (response.status === 200) {
         response.json().then(data => {
           // console.log(data);
