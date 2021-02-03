@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // const url = 'http://127.0.0.1:5000/api/members';
-const url = 'http://15.165.86.166:3000';
+// const url = 'http://15.165.86.166:3000';
+const url = '52.79.173.99:3000';
 
 const postAnswerAPI = async object => {
   try {
