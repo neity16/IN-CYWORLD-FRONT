@@ -102,4 +102,4 @@
 
 ### :link: URL
 
-- [인-싸이월드 바로가기](http://in-cyworld-front-git-main.in-cyword.vercel.app/)
+- [인-싸이월드 바로가기](https://in-cyworld.vercel.app/)
