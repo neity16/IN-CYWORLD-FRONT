@@ -22,7 +22,7 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
     status: "idle",
   });
 
-  /* test */
+  /* test12 */
   const fetchData = async () => {
     setLevelStatus({
       ...levelStatus,
