@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styled from "styled-components";
-import Logo from "../images/logo-white-100.svg";
+import Logo from "../images/logo-white.svg";
 import sketchbook from "../images/sketchbook.svg";
 
 const Button = styled.button`
@@ -45,14 +45,14 @@ function ResultPage({ object, props, onResetAns }) {
     await fetch(`https://incy-world.ga/result/${levelNum}`).then((response) => {
       if (response.status === 200) {
         response.json().then((data) => {
-          console.log(data);
+          //console.log(data);
           setLevelStatus({
             leveldata: data.data,
             status: "resolved",
           });
         });
       } else {
-        console.log("Error");
+        //console.log("Error");
         setLevelStatus({
           ...levelStatus,
           status: "idle",

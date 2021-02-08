@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import ResultPage from "./pages/ResultPage";
+import ResultPage from "./pages/RenewalResultPage";
 import QuestionPage from "./pages/QuestionPage";
 import { postAnswerAPI } from "./lib/api/Answer";
 
@@ -41,7 +41,7 @@ const question = [
       "차 천장을 때린다",
       "황금 박쥐라고 외친다",
       "'황마!' 외치고 친구를 때린다",
-      "차 문을 열고 코끼리 코를 돈다",
+      "코끼리 코를 돈다",
     ],
     img:
       "https://images.velog.io/images/neity16/post/d8619e37-70bd-45a7-9764-a4b03a2f097f/d%20(4).jpg",
@@ -67,14 +67,14 @@ const question = [
   {
     idx: 7,
     desc: "다음 단어를 영어로 읽으면?",
-    bogi: ["wmf", "your welcome", "Kin", "Jeul"],
+    bogi: ["WMF", "YOUR WELCOME", "KIN", "JEUL"],
     img:
       "https://www.theteams.kr/includes/uploads/company_profile/%EC%A6%90%EB%9D%BC%ED%8A%B8%EB%8B%88.png",
   },
   {
     idx: 8,
     desc: "이 장면을 설명하는 어휘는?",
-    bogi: ["긴또깡", "빵꾸똥꾸", "그지깽꺵이", "을용타"],
+    bogi: ["긴또깡", "빵꾸똥꾸", "그지깽깽이", "을용타"],
     img: "https://upload.wikimedia.org/wikipedia/ko/4/4e/Eulyongta.jpg",
   },
   {
