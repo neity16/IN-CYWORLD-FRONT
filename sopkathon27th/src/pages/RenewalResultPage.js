@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { ReactComponent as Logo } from '../images/logo-white.svg';
-import { ReactComponent as Sketchbook } from '../images/result-sketchbook.svg';
-import { ReactComponent as Share } from '../images/btn-share.svg';
-import { ReactComponent as Retry } from '../images/btn-retry.svg';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { ReactComponent as Logo } from "../images/logo-white.svg";
+import { ReactComponent as Sketchbook } from "../images/result-sketchbook.svg";
+import { ReactComponent as Share } from "../images/btn-share.svg";
+import { ReactComponent as Retry } from "../images/btn-retry.svg";
 
 const RenewalResultPage = ({ object, props, onResetAns }) => {
   const link = window.location.href;
@@ -19,42 +19,42 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
 
   const [levelStatus, setLevelStatus] = useState({
     leveldata: null,
-    status: 'idle',
+    status: "idle",
   });
 
   /* test */
   const fetchData = async () => {
     setLevelStatus({
       ...levelStatus,
-      status: 'pending',
+      status: "pending",
     });
 
-    await fetch(`https://52.79.173.99:3000/result/${levelNum}`).then(response => {
+    await fetch(`https://incy-world.ga/result/${levelNum}`).then((response) => {
       if (response.status === 200) {
-        response.json().then(data => {
+        response.json().then((data) => {
           // console.log(data);
           setLevelStatus({
             leveldata: data.data,
-            status: 'resolved',
+            status: "resolved",
           });
         });
       } else {
         // console.log('Error');
         setLevelStatus({
           ...levelStatus,
-          status: 'idle',
+          status: "idle",
         });
       }
     });
   };
 
   const onHandleAgain = () => {
-    props.history.push('/');
+    props.history.push("/");
     onResetAns();
   };
 
   const onHandleCopy = () => {
-    alert('클립보드에 테스트 결과가 복사되었습니다.');
+    alert("클립보드에 테스트 결과가 복사되었습니다.");
   };
 
   useEffect(() => {
@@ -62,9 +62,9 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
   }, []);
 
   switch (levelStatus.status) {
-    case 'pending':
+    case "pending":
       return <div>LOADING!</div>;
-    case 'resolved':
+    case "resolved":
       return (
         <StyledResult>
           <StyledLogo>
@@ -80,7 +80,7 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
               </div>
             </StyledScore>
           ) : (
-            ''
+            ""
           )}
           <StyledSketchbook>
             <Sketchbook />
@@ -92,7 +92,9 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
           </StyledSketchbook>
           <StyledVideo>
             <>
-              <StyledRecommend>LV.{levelNum}인 당신을 위한 추천 영상</StyledRecommend>
+              <StyledRecommend>
+                LV.{levelNum}인 당신을 위한 추천 영상
+              </StyledRecommend>
               <StyledYoutube>
                 <iframe
                   width="100%"
@@ -112,20 +114,20 @@ const RenewalResultPage = ({ object, props, onResetAns }) => {
                 <Share />
               </div>
             </CopyToClipboard>
-            <div style={{ marginLeft: '11.6rem' }} onClick={onHandleAgain}>
+            <div style={{ marginLeft: "11.6rem" }} onClick={onHandleAgain}>
               <Retry />
             </div>
           </StyledButton>
         </StyledResult>
       );
-    case 'idle':
+    case "idle":
     default:
       return <div>idle status</div>;
   }
 };
 
 const StyledResult = styled.div`
-  background-image: url('/background/result-background.png');
+  background-image: url("/background/result-background.png");
 `;
 
 const StyledLogo = styled.div`
