@@ -42,25 +42,23 @@ function ResultPage({ object, props, onResetAns }) {
       ...levelStatus,
       status: "pending",
     });
-    await fetch(`http://15.165.86.166:3000/result/${levelNum}`).then(
-      (response) => {
-        if (response.status === 200) {
-          response.json().then((data) => {
-            console.log(data);
-            setLevelStatus({
-              leveldata: data.data,
-              status: "resolved",
-            });
-          });
-        } else {
-          console.log("Error");
+    await fetch(`https://incy-world.ga/result/${levelNum}`).then((response) => {
+      if (response.status === 200) {
+        response.json().then((data) => {
+          console.log(data);
           setLevelStatus({
-            ...levelStatus,
-            status: "idle",
+            leveldata: data.data,
+            status: "resolved",
           });
-        }
+        });
+      } else {
+        console.log("Error");
+        setLevelStatus({
+          ...levelStatus,
+          status: "idle",
+        });
       }
-    );
+    });
   };
   const onHandleAgain = () => {
     props.history.push("/");
