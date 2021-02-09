@@ -24,23 +24,21 @@
 
 #### 🌐 메인 
 
-![main-img](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdo0RJ7%2FbtqWxfn6UuH%2FoHKy18f6qAZGDjIYEdtgM0%2Fimg.gif)
+![main-img](https://blog.kakaocdn.net/dn/do0RJ7/btqWxfn6UuH/oHKy18f6qAZGDjIYEdtgM0/img.gif)
 
 - [1] 자신의 출생연도를 입력하고 테스트를 시작한다.
 
-<br>
 
 #### 🌐 테스트
 
-![test-img](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkICo3%2FbtqWxf2JHik%2FbngIYOLkgh84Ps5XzwGSzk%2Fimg.gif)
+![test-img](https://blog.kakaocdn.net/dn/bkICo3/btqWxf2JHik/bngIYOLkgh84Ps5XzwGSzk/img.gif)
 
 - [2] 90년대 유행했던 짤을 보고 정답을 맞히며 테스트를 진행한다.
 
-<br>
 
 #### 🌐 결과
 
-![result-img](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbtboD7%2FbtqWGLe858D%2FGi6hxZnjwUK6jWXPBZ28FK%2Fimg.gif)
+![result-img](https://blog.kakaocdn.net/dn/btboD7/btqWGLe858D/Gi6hxZnjwUK6jWXPBZ28FK/img.gif)
 
 - [3] 테스트 결과에 따라 레벨을 4단계로 나누어 자신의 레벨(점수 및 연령대별 상위 퍼센트)을 보여준다.
 
@@ -48,7 +46,6 @@
 
 - [5] 테스트를 처음부터 다시 진행하거나 최종 결과를 공유할 수 있다.
 
-<br>
 
 ### :closed_book: 사용 기술/라이브러리
 
@@ -83,7 +80,8 @@
  ┃ ┣ 📜Question_9.png
  ┃ ┗ 📜result-background.png
  ┣ 📜favicon.ico
- ┗ 📜index.html
+ ┣ 📜index.html
+ ┗ 📜main-image.png
 📦src
  ┣ 📂components
  ┃ ┗ 📜Background.js
