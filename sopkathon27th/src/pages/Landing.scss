@@ -5,7 +5,7 @@
   margin: 0;
   padding-top: 45%;
   padding-bottom: 5%;
-  background-image: url('../images/landing.png');
+  background-image: url("../images/landing.png");
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
@@ -35,5 +35,6 @@
     border-bottom-right-radius: 1.4rem;
     border: solid 0.3rem white;
     border-left: none;
+    background-color: #eeeeef;
   }
 }
