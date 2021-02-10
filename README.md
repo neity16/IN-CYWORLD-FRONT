@@ -24,21 +24,21 @@
 
 #### 🌐 메인 
 
-![main-img](https://blog.kakaocdn.net/dn/do0RJ7/btqWxfn6UuH/oHKy18f6qAZGDjIYEdtgM0/img.gif)
+![main-img](https://drive.google.com/uc?export=view&id=188immHs5Fxz-msmyC4OtxxI6XbzJstyb)
 
 - [1] 자신의 출생연도를 입력하고 테스트를 시작한다.
 
 
 #### 🌐 테스트
 
-![test-img](https://blog.kakaocdn.net/dn/bkICo3/btqWxf2JHik/bngIYOLkgh84Ps5XzwGSzk/img.gif)
+![test-img](https://drive.google.com/uc?export=view&id=1TL_bBSZIz5dlTQg-yibkxv5WT6KZynxg)
 
 - [2] 90년대 유행했던 짤을 보고 정답을 맞히며 테스트를 진행한다.
 
 
 #### 🌐 결과
 
-![result-img](https://blog.kakaocdn.net/dn/btboD7/btqWGLe858D/Gi6hxZnjwUK6jWXPBZ28FK/img.gif)
+![result-img](https://drive.google.com/uc?export=view&id=1jB3OGGquRms-40USpIM7EWCeV5KHqqdx)
 
 - [3] 테스트 결과에 따라 레벨을 4단계로 나누어 자신의 레벨(점수 및 연령대별 상위 퍼센트)을 보여준다.
 
