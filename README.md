@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FE1iyv%2FbtqVqGTz7m0%2FIbqN3uXlk9TjaiUxGoS0Gk%2Fimg.png" alt="Logo" width="150" height="150">
 </p>
-<h2 align="center">인-싸이월드</h2>
+<h2 align="center"><a href="https://in-cyworld.vercel.app/">인-싸이월드</a></h2>
 <br>
 
 ### 📑 프로젝트 소개
