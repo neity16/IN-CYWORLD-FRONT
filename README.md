@@ -120,7 +120,7 @@ yarn start
 
 ## 💻 개발자
 
-| <img src="https://avatars1.githubusercontent.com/u/48766355?s=460&u=0419d273d1a31539ee4f1151cdacb6fefd45dacc&v=4" width="70" height="70"><br>[김민지](https://github.com/mnxmnz) | <img src="https://avatars.githubusercontent.com/u/54431522?s=460&u=2202642a1809a52fa34f00e580e6d6ab5796a92b&v=4" width="70" height="70"><br>[김정욱](https://github.com/guno517) | <img src="https://avatars.githubusercontent.com/u/72637095?s=460&u=b6afb83e8ef6b983585d545e3456a6b80b238357&v=4" width="70" height="70"><br>[안채린](https://github.com/th0532) |
+| <img src="https://avatars1.githubusercontent.com/u/48766355?s=460&u=0419d273d1a31539ee4f1151cdacb6fefd45dacc&v=4" width="70" height="70"><br>[김민지](https://github.com/mnxmnz) | <img src="https://avatars.githubusercontent.com/u/54431522?s=460&u=2202642a1809a52fa34f00e580e6d6ab5796a92b&v=4" width="70" height="70"><br>[김정욱](https://github.com/neity16) | <img src="https://avatars.githubusercontent.com/u/72637095?s=460&u=b6afb83e8ef6b983585d545e3456a6b80b238357&v=4" width="70" height="70"><br>[안채린](https://github.com/achrvv) |
 | --- | --- | --- |
 
 ### :link: URL
