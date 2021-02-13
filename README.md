@@ -4,7 +4,7 @@
 <h2 align="center"><a href="https://in-cyworld.vercel.app/">인-싸이월드</a></h2>
 <br>
 
-### 📑 프로젝트 소개
+## 📑 프로젝트 소개
 
 🌐 90년대생의 밈 테스트 기능을 제공하는 웹 서비스입니다.
 
