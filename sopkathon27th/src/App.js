@@ -69,7 +69,7 @@ const question = [
     desc: '이 사람의 풀네임을 완성하시오. 루이 윌리엄~스 OOOO OOO 3세',
     bogi: ['알프레도 주니어 3세', '로마리오 주니어 3세', '리마리오 주니어 3세', '세바스찬 주니어 3세'],
     img:
-      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fzazak.tistory.com%2F252&psig=AOvVaw2kD0KOs1CBUhOdg66oulOT&ust=1613378633782000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKj1vIH-6O4CFQAAAAAdAAAAABAD',
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTA0MjNfMTEg%2FMDAxNTU1OTg4MDQzMjIx.rVR778YdoPGqm3EUQmvpCi20HlZwu604PUE0tcM39jMg.aoFoOc8CTOyXtxCy2ZBts_0yQbQLzxTOZ_6ry9LwN-Ag.PNG.shalacho%2Fthumb.png&type=sc960_832',
   },
 ];
 
@@ -111,7 +111,7 @@ function App({ history, match }) {
       birthYear: birthYear,
       answers: ans,
     };
-    console.log(object);
+    // console.log(object);
     const result = await postAnswerAPI(object);
     SetObject({
       score: result.score,
