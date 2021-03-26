@@ -44,34 +44,41 @@ PROJECT PERIOD: 2020.11.21 ~ 2020.11.22, 2021.01.25 ~ 2021.02.09
 
 ```
 public
- ┣ background
+ ┣ images
  ┃ ┣ Question_1.png
- ┃ ┣ Question_10.png
  ┃ ┣ ...
  ┃ ┗ result-background.png
  ┣ favicon.ico
  ┣ index.html
- ┗ main-image.png
+ ┗ meta-image.png
 src
+ ┣ assets
+ ┃ ┣ icons
+ ┃ ┃ ┣ btn-retry.svg
+ ┃ ┃ ┣ ...
+ ┃ ┃ ┗ result-sketchbook.svg
+ ┃ ┗ images
+ ┃ ┃ ┣ landing.png
+ ┃ ┃ ┣ ...
+ ┃ ┃ ┗ result-sketchbook.png
  ┣ components
+ ┃ ┣ style
+ ┃ ┃ ┗ Landing.scss
  ┃ ┗ Background.js
- ┣ images
- ┃ ┣ btn-retry.svg
- ┃ ┣ ...
- ┃ ┗ result-sketchbook.svg
  ┣ lib
- ┃ ┗ api
+ ┃ ┣ api
  ┃ ┃ ┗ Answer.js
+ ┃ ┗ data
+ ┃ ┃ ┗ Question.js
  ┣ pages
- ┃ ┣ Landing.scss
- ┃ ┣ ...
+ ┃ ┣ LandingPage.js
+ ┃ ┣ QuestionPage.js
  ┃ ┗ ResultPage.js
  ┣ App.css
  ┣ App.js
  ┣ index.css
  ┣ index.js
- ┣ reportWebVitals.js
- ┗ setupTests.js
+ ┗ reportWebVitals.js
 ```
 
 ## 🛠 사용 기술
@@ -120,7 +127,7 @@ yarn start
 
 ## 💻 개발자
 
-| <img src="https://avatars1.githubusercontent.com/u/48766355?s=460&u=0419d273d1a31539ee4f1151cdacb6fefd45dacc&v=4" width="70" height="70"><br>[김민지](https://github.com/mnxmnz) | <img src="https://avatars.githubusercontent.com/u/54431522?s=460&u=2202642a1809a52fa34f00e580e6d6ab5796a92b&v=4" width="70" height="70"><br>[김정욱](https://github.com/neity16) | <img src="https://avatars.githubusercontent.com/u/72637095?s=460&u=b6afb83e8ef6b983585d545e3456a6b80b238357&v=4" width="70" height="70"><br>[안채린](https://github.com/achrvv) |
+| <img src="https://avatars1.githubusercontent.com/u/48766355?s=460&u=0419d273d1a31539ee4f1151cdacb6fefd45dacc&v=4" width="70" height="70"><br>[김민지](https://github.com/mnxmnz) | <img src="https://avatars.githubusercontent.com/u/54431522?s=460&u=2202642a1809a52fa34f00e580e6d6ab5796a92b&v=4" width="70" height="70"><br>[김정욱](https://github.com/neity16) | <img src="https://avatars.githubusercontent.com/u/72637095?s=460&u=b6afb83e8ef6b983585d545e3456a6b80b238357&v=4" width="70" height="70"><br>[안채린](https://github.com/chaerin00) |
 | --- | --- | --- |
 
 ### :link: URL
