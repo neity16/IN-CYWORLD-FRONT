@@ -37,8 +37,6 @@ function App({ history, match }) {
     (function test(c) {
       SetAns(c);
     })(change);
-
-    //console.log(ans);
   };
 
   const onBirthHandler = (data) => {
