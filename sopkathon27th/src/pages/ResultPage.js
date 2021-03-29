@@ -1,268 +1,274 @@
-import React, { useState, useEffect } from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import styled from "styled-components";
-import Logo from "../images/logo-white.svg";
-import sketchbook from "../images/sketchbook.svg";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { ReactComponent as Logo } from '../assets/icons/logo-white.svg';
+import { ReactComponent as Sketchbook } from '../assets/icons/result-sketchbook.svg';
+import { ReactComponent as Share } from '../assets/icons/btn-share.svg';
+import { ReactComponent as Retry } from '../assets/icons/btn-retry.svg';
 
-const Button = styled.button`
-  width: 260px;
-  height: 62px;
-  font-weight: bold;
-  text-align: center;
-  font-size: 30px;
-  line-height: 62px;
-  color: white;
-  background: rgba(0, 0, 0, 0.01);
-  position: relative;
-  left: 500px;
-  top: 200px;
-  border: solid white 3px;
-  border-radius: 20px;
-  padding-bottom: 10px;
-  margin-right: 50px;
-  cursor: pointer;
-  &:hover {
-    background: #ff4000;
-  }
-`;
-function ResultPage({ object, props, onResetAns }) {
+const RenewalResultPage = ({ object, props, onResetAns }) => {
   const link = window.location.href;
+
+  // console.log(object);
   const score = object.score;
   const scoreRate = object.scoreRate;
+
   const levelNum = props.match.params.levelNum;
+
   let number = String(scoreRate);
   let numberValue = number.substring(0, 2);
+
   const [levelStatus, setLevelStatus] = useState({
     leveldata: null,
-    status: "idle",
+    status: 'idle',
   });
-  /* test */
+
   const fetchData = async () => {
     setLevelStatus({
       ...levelStatus,
-      status: "pending",
+      status: 'pending',
     });
-    await fetch(`https://incy-world.ga/result/${levelNum}`).then((response) => {
+
+    await fetch(`https://incy-world.ga/result/${levelNum}`).then(response => {
       if (response.status === 200) {
-        response.json().then((data) => {
-          //console.log(data);
+        response.json().then(data => {
+          // console.log(data);
           setLevelStatus({
             leveldata: data.data,
-            status: "resolved",
+            status: 'resolved',
           });
         });
       } else {
-        //console.log("Error");
+        // console.log('Error');
         setLevelStatus({
           ...levelStatus,
-          status: "idle",
+          status: 'idle',
         });
       }
     });
   };
+
   const onHandleAgain = () => {
-    props.history.push("/");
+    props.history.push('/');
     onResetAns();
   };
+
+  const onHandleCopy = () => {
+    alert('클립보드에 테스트 결과가 복사되었습니다.');
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   switch (levelStatus.status) {
-    case "pending":
-      return <div>LOADING!</div>;
-    case "resolved":
+    case 'pending':
+      return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>LOADING</div>;
+    case 'resolved':
       return (
-        <>
-          <div>
-            <StyledResult>
+        <StyledResult>
+          <StyledLogo>
+            <Logo onClick={onHandleAgain} />
+          </StyledLogo>
+          <StyledTitle>당신의 인-싸이월드 테스트 결과는?</StyledTitle>
+          {score ? (
+            <StyledScore>
+              <div>{score}점</div>
               <div>
-                <div>
-                  <img alt="logo" src={Logo}></img>
-                </div>
-                <div>당신의 인-싸이월드 테스트 결과는?</div>
-                {score ? (
-                  <div>
-                    <div>{score}점</div>
-                    <div>동년배 중 상위 {numberValue}%</div>
-                  </div>
-                ) : (
-                  <div></div>
-                )}
+                <span>동년배 중</span>
+                <span>상위 {numberValue}%</span>
               </div>
-              <div>
-                <div>{levelStatus.leveldata.title}</div>
-                <div>
-                  <img alt="img" src={levelStatus.leveldata.imageUrl}></img>
-                </div>
-                <div>{levelStatus.leveldata.guide}</div>
-                <img src={sketchbook}></img>
+            </StyledScore>
+          ) : (
+            ''
+          )}
+          <StyledSketchbook>
+            <Sketchbook />
+            <StyledLevel>{levelStatus.leveldata.title}</StyledLevel>
+            <StyledPhoto>
+              <img alt="result-img" src={levelStatus.leveldata.imageUrl}></img>
+            </StyledPhoto>
+            <StyledDetail>{levelStatus.leveldata.guide}</StyledDetail>
+          </StyledSketchbook>
+          <StyledVideo>
+            <>
+              <StyledRecommend>LV.{levelNum}인 당신을 위한 추천 영상</StyledRecommend>
+              <StyledYoutube>
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={levelStatus.leveldata.videoUrl}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  title="YouTube"
+                ></iframe>
+              </StyledYoutube>
+            </>
+          </StyledVideo>
+          <StyledButton>
+            <CopyToClipboard text={link}>
+              <div onClick={onHandleCopy}>
+                <Share />
               </div>
-              <div>Lv.{levelNum}인 당신을 위한 추천 영상</div>
-              <div>
-                <section className="player">
-                  <iframe
-                    width="843"
-                    height="412"
-                    src={levelStatus.leveldata.videoUrl}
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    title="YouTube"
-                  ></iframe>
-                </section>
-              </div>
-              <div></div>
-              <div>
-                <CopyToClipboard text={link}>
-                  <Button>결과 공유하기</Button>
-                </CopyToClipboard>
-                <Button onClick={onHandleAgain}>다시 하기</Button>
-              </div>
-            </StyledResult>
-          </div>
-        </>
+            </CopyToClipboard>
+            <div style={{ marginLeft: '11.6rem' }} onClick={onHandleAgain}>
+              <Retry />
+            </div>
+          </StyledButton>
+        </StyledResult>
       );
-    case "idle":
+    case 'idle':
     default:
       return <div>idle status</div>;
   }
-}
+};
 
 const StyledResult = styled.div`
-  background-color: #ff6600;
-  width: 100%;
-  height: 3000px;
+  background-image: url('/images/result-background.png');
+`;
 
-  & > div:nth-child(1) > div:nth-child(1) {
-    padding-top: 34px;
-    padding-left: 40px;
-  }
+const StyledLogo = styled.div`
+  padding-top: 3.4rem;
+  padding-left: 4rem;
 
-  & > div:nth-child(1) > div:nth-child(2) {
-    color: white;
-    font-weight: 900;
-    font-size: 80px;
-    text-align: center;
-  }
-
-  & > div:nth-child(1) > div:nth-child(3) {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-top: 50px;
-  }
-
-  & > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) {
-    /* position: absolute; */
-    width: 304px;
-    height: 100px;
-    /* left: 537px;
-        top: 261px; */
-    color: white;
-    border: 2px solid #ffffff;
-    box-sizing: border-box;
-    border-radius: 20px;
-    font-size: 54px;
-    line-height: 80px;
-    /* identical to box height */
-    text-align: center;
-    padding: 2px;
-  }
-
-  & > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) {
-    /* position: absolute; */
-    width: 521px;
-    height: 100px;
-    /* left: 862px;
-        top: 261px; */
-    color: white;
-    border: 2px solid #ffffff;
-    box-sizing: border-box;
-    border-radius: 20px;
-    font-size: 54px;
-    line-height: 80px;
-    /* identical to box height */
-    text-align: center;
-    margin-left: 10px;
-    padding: 2px;
-  }
-
-  & > div:nth-child(2) {
-    /* position: absolute; */
-    width: 1280px;
-    height: 860px;
-    /* left: 320px;
-        top: 444px; */
-    text-align: center;
-    /* display: flex;
-        justify-content: center;
-        text-align: center; */
-    margin-left: 110px;
-    margin-top: 50px;
-  }
-
-  & > div:nth-child(2) > div:nth-child(1) {
-    position: absolute;
-    width: 1280px;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 71px;
-    text-align: center;
-    letter-spacing: -0.03em;
-    color: #ff6600;
-    font-weight: 700;
-    margin-top: 100px;
-    text-decoration: underline;
-  }
-
-  & > div:nth-child(2) > div:nth-child(2) {
-    position: absolute;
-    width: 534px;
-    height: 454px;
-    text-align: center;
-    margin-top: 200px;
-    margin-left: 373px;
-  }
-
-  & > div:nth-child(2) > div:nth-child(3) {
-    position: absolute;
-    width: 900px;
-    height: 150px;
-    text-align: center;
-    margin-top: 650px;
-    margin-left: 220px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 28px;
-    line-height: 180%;
-    letter-spacing: -0.05em;
-    color: #666666;
-  }
-
-  & > div:nth-child(3) {
-    position: absolute;
-    width: 1064px;
-    height: 599px;
-    left: 450px;
-    top: 1513px;
-    color: #ff6600;
-    font-size: 48px;
-    line-height: 71px;
-  }
-
-  & > div:nth-child(4) {
-    position: absolute;
-    left: 350px;
-    top: 1613px;
-    border: 4px solid #ff6600;
-  }
-
-  & > div:nth-child(5) {
-    height: 897px;
-    margin-top: 127px;
-    background-color: black;
+  svg {
+    width: 10rem;
+    height: 10rem;
   }
 `;
 
-export default ResultPage;
+const StyledTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 8rem;
+  line-height: 11.8rem;
+  color: #ffffff;
+`;
+
+const StyledScore = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 2.3rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 5.4rem;
+  color: #ffffff;
+
+  div {
+    border: 0.2rem solid #ffffff;
+    border-radius: 2rem;
+  }
+
+  div:nth-child(1) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 9.5rem;
+    padding-right: 9.5rem;
+  }
+
+  div:nth-child(2) {
+    margin-left: 2.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 6.1rem;
+    padding-right: 8.2rem;
+
+    span:nth-child(1) {
+      padding-top: 3.8rem;
+      padding-bottom: 1.7rem;
+      padding-right: 3.6rem;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 3.2rem;
+      color: #ffffff;
+    }
+  }
+`;
+
+const StyledSketchbook = styled.div`
+  margin-top: 5.4rem;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    width: 128rem;
+    height: 89.3rem;
+  }
+`;
+
+const StyledLevel = styled.div`
+  position: absolute;
+  top: 8.3rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4.8rem;
+  color: #ff6600;
+  text-decoration: underline;
+  text-underline-position: under;
+`;
+
+const StyledPhoto = styled.div`
+  position: absolute;
+  top: 19.7rem;
+
+  img {
+    width: auto;
+    height: 45.4rem;
+  }
+`;
+
+const StyledDetail = styled.div`
+  position: absolute;
+  top: 68.1rem;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.8rem;
+  color: #666666;
+  width: 91.1rem;
+  height: 15rem;
+  line-height: 5rem;
+`;
+
+const StyledVideo = styled.div`
+  margin-top: 12.7rem;
+  width: 100%;
+  height: 89.7rem;
+  background: #000000;
+  text-align: center;
+`;
+
+const StyledRecommend = styled.div`
+  padding-top: 7.1rem;
+  padding-bottom: 4rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4.8rem;
+  color: #ff6600;
+`;
+
+const StyledYoutube = styled.div`
+  width: 106.4rem;
+  height: 59.9rem;
+  border: 0.4rem solid #ff6600;
+  margin: 0 auto;
+`;
+
+const StyledButton = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 6.6rem;
+  padding-bottom: 6.6rem;
+
+  svg {
+    width: 36.3rem;
+    height: 12rem;
+  }
+`;
+
+export default RenewalResultPage;

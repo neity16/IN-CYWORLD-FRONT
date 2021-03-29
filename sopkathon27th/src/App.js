@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -97,6 +98,17 @@ const question = [
       "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTA0MjNfMTEg%2FMDAxNTU1OTg4MDQzMjIx.rVR778YdoPGqm3EUQmvpCi20HlZwu604PUE0tcM39jMg.aoFoOc8CTOyXtxCy2ZBts_0yQbQLzxTOZ_6ry9LwN-Ag.PNG.shalacho%2Fthumb.png&type=sc960_832",
   },
 ];
+=======
+import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { question } from './lib/data/Question';
+import { postAnswerAPI } from './lib/api/Answer';
+import LandingPage from './pages/LandingPage';
+import QuestionPage from './pages/QuestionPage';
+import ResultPage from './pages/ResultPage';
+>>>>>>> 9cebe1ccf4da6554dbac736c01c00566da753584
 
 function App({ history, match }) {
   const [ans, SetAns] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
@@ -106,7 +118,7 @@ function App({ history, match }) {
     scoreRate: 0,
     levelNum: 0,
   });
-  /* setAns 비동기 처리가 안되서 일단 이렇게 결과를 서버에 보내게 했음 */
+
   useEffect(() => {
     if (ans[9] !== 0) {
       onAnswerSubmit();
@@ -121,36 +133,51 @@ function App({ history, match }) {
         return d;
       }
     });
+
     //console.log(change);
-    //SetAns(change);
+
     (function test(c) {
       SetAns(c);
     })(change);
+
     //console.log(ans);
   };
+<<<<<<< HEAD
   const onBirthHandler = (data) => {
+=======
+
+  const onBirthHandler = data => {
+>>>>>>> 9cebe1ccf4da6554dbac736c01c00566da753584
     SetBirthYear(data);
   };
+
   const onAnswerSubmit = async () => {
     const object = {
       birthYear: birthYear,
       answers: ans,
     };
+
     // console.log(object);
     const result = await postAnswerAPI(object);
+
     SetObject({
       score: result.score,
       scoreRate: result.scoreRate,
       levelNum: result.levelNum,
     });
+
     //console.log(history);
     history.push(`/result/${result.levelNum}`);
+    window.location.reload();
   };
+
   const onResetAns = () => {
     SetAns([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     SetBirthYear("");
   };
+
   return (
+<<<<<<< HEAD
     <Switch>
       <Route
         exact
@@ -185,6 +212,16 @@ function App({ history, match }) {
       {/* <Route path='/question/:idx' component={Question}></Route> */}
       <Route path="/*">404 NOT FOUND</Route>
     </Switch>
+=======
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" render={props => <LandingPage onBirthHandler={onBirthHandler} props={props} />}></Route>
+        <Route exact path="/question" render={props => <QuestionPage onAnswerSubmit={onAnswerSubmit} onAnsHandler={onAnsHandler} question={question} />}></Route>
+        <Route exact path="/result/:levelNum" render={props => <ResultPage props={props} onResetAns={onResetAns} object={object} />}></Route>
+        <Route path="/*">404 NOT FOUND</Route>
+      </Switch>
+    </BrowserRouter>
+>>>>>>> 9cebe1ccf4da6554dbac736c01c00566da753584
   );
 }
 
